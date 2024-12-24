@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Christmas Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #00111a, #004e92);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
+
+        .christmas-wish {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            position: relative;
+            display: flex;
+            gap: 0.2rem;
+        }
+
+        .letter {
+            opacity: 0;
+            transform: translateY(20px);
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #ff0000, 0 0 30px #ff4500;
+            animation: glow 1.5s infinite alternate, fadeIn 0.5s forwards;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #ffffff, 0 0 10px #ff4500, 0 0 15px #ff6347;
+            }
+            to {
+                text-shadow: 0 0 20px #ffffff, 0 0 30px #ff4500, 0 0 50px #ff6347;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="christmas-wish" id="wish-container"></div>
+
+    <script>
+        const text = "Happy Christmas!";
+        const container = document.getElementById("wish-container");
+
+        // Add each letter as a span and apply a delay
+        text.split("").forEach((letter, index) => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.classList.add("letter");
+            span.style.animationDelay = `${index * 0.3}s`; // Delay for each letter
+            container.appendChild(span);
+        });
+    </script>
+</body>
+</html>
